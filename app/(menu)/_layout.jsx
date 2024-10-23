@@ -1,37 +1,48 @@
-import { View, Text, SafeAreaView } from 'react-native';
-import React,  { useState } from 'react';
-import { Stack, useRouter } from 'expo-router';
-import Header from '../../components/Header';
-import SideMenu from '../../components/SideMenu';
+import { GestureHandlerRootView } from "react-native-gesture-handler"
+import { Drawer } from 'expo-router/drawer';
+import { Image } from "react-native";
+import { FontAwesome } from '@expo/vector-icons';
+
 
 const MenuLayout = () => {
+    return (
+        <GestureHandlerRootView style={{ flex: 1}}>
 
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const router = useRouter();
+            <Drawer>
+                <Drawer.Screen
+                    name="polls"
+                    options={{
+                        drawerLabel: "Опросы",
+                        drawerIcon: ()=> (
+                            <FontAwesome name="tasks" size={24} color="#000" />
+                        ),
+                    }}
+                />
 
-  return (
-    <SafeAreaView className="flex-1 mt-10">
+                <Drawer.Screen
+                    name="users"
+                    options={{
+                        drawerLabel: "Пользователи",
+                        drawerIcon: ()=> (
+                            <FontAwesome name="users" size={24} color="#000" />
+                        ),
+                    }}
+                />
 
-      {/* Заголовок с гамбургером, заголовком и поиском */}
-      <Header
-        title="Опросы"
-        onMenuPress={() => setIsMenuVisible(true)} 
-        onSearchPress={() => console.log('Поиск')}
-      />
+                <Drawer.Screen
+                    name="results"
+                    options={{
+                        drawerLabel: "Результаты",
+                        drawerIcon: ()=> (
+                            <FontAwesome name="rocket" size={24} color="#000" />
+                        ),
+                    }}
+                />
+            </Drawer>
 
-      {/* Боковое меню */}
-      {isMenuVisible && (
-        <SideMenu onClose={() => setIsMenuVisible(false)} />
-      )}
+        </GestureHandlerRootView>
+    )
 
-      {/* Содержимое страниц */}
-      <Stack>
-        <Stack.Screen name="polls" options={{ headerShown: false }} />
-        <Stack.Screen name="users" options={{ headerShown: false }} />
-        <Stack.Screen name="results" options={{ headerShown: false }} />
-      </Stack>
-    </SafeAreaView>
-  )
 }
 
 export default MenuLayout

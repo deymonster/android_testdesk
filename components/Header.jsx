@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 
 const Header = ({ title, onMenuPress, onSearchPress }) => {
@@ -8,7 +8,7 @@ const Header = ({ title, onMenuPress, onSearchPress }) => {
         <View className="flex-row items-center justify-between px-4 py-4 bg-background">
 
             <TouchableOpacity onPress={onMenuPress}>
-                <FontAwesome name="bars" size={24} color="#000" />
+                <Ionicons name="menu" size={24} color="#000" />
             </TouchableOpacity>
 
             <Text className="text-lg font-bold text-primary">
@@ -16,7 +16,7 @@ const Header = ({ title, onMenuPress, onSearchPress }) => {
             </Text>
 
             <TouchableOpacity onPress={onSearchPress}>
-                <FontAwesome name="search" size={24} color="#000" />
+                <Ionicons name="search" size={24} color="#000" />
             </TouchableOpacity>
         </View>
     )
