@@ -1,10 +1,24 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import { images } from '@constants';
+import { useGlobalContext } from '../context/GlobalProvider';
 
 export default function Welcome() {
   const router = useRouter();
+  const { isLogged, loading } = useGlobalContext();
+
+  const handleStart = () => {
+    if (loading) {
+      // Если все еще идет загрузка, можно показать индикатор загрузки
+      return <ActivityIndicator size="large" color="#FF9C01" />;
+    }
+    if (isLogged) {
+      router.push('/(menu)/polls');
+    } else {
+      router.push('/(auth)/sign-in');
+    }
+  };
 
   return (
     <View className="flex-1 items-center justify-between bg-background p-8">
@@ -24,10 +38,11 @@ export default function Welcome() {
       
       <TouchableOpacity 
         className="w-full bg-secondary py-4 rounded-full"
-        onPress={() => router.push('/(auth)/sign-in')}
+        onPress={handleStart}
+        disabled={loading}
       >
         <Text className="text-white text-center font-pbold text-lg">
-          Начать
+          {loading ? 'Загрузка...' : 'Начать'}
         </Text>
       </TouchableOpacity>
     </View>

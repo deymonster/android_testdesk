@@ -13,8 +13,8 @@ const AuthLayout = () => {
           name="sign-in" 
           
         />
-        {/* <Stack.Screen name="sign-up" /> */}
-        {/* Добавьте другие экраны аутентификации здесь, если они есть */}
+        {/* <Stack.Screen name="sign-up" />  */}
+        
       </Stack>
     </View>
   )
