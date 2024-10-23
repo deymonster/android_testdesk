@@ -16,30 +16,30 @@ export const axiosClient: AxiosInstance = axios.create({
   });
 
 // Функция для получения accessToken
-const getAccessToken = async () => {
+export const getAccessToken = async () => {
     return await SecureStore.getItemAsync('accessToken');
   };
 
 
 // Функция для получения refreshToken
-const getRefreshToken = async () => {
+export const getRefreshToken = async () => {
     return await SecureStore.getItemAsync('refreshToken');
   };
 
 // Функция для сохранения accessToken 
-const saveAccessToken = async (token: string) => {
+export const saveAccessToken = async (token: string) => {
     await SecureStore.setItemAsync('accessToken', token);
   };
 
 // Функция для сохранения refreshToken 
-const saveRefreshToken = async (token: string) => {
+export const saveRefreshToken = async (token: string) => {
     await SecureStore.setItemAsync('refreshToken', token);
   };
 
 
 
 // Функция для удаления токенов из безопасного хранилища
-const removeTokens = async () => {
+export const removeTokens = async () => {
     await SecureStore.deleteItemAsync('accessToken');
     await SecureStore.deleteItemAsync('refreshToken');
 

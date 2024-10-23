@@ -11,6 +11,7 @@ module.exports = function (api) {
             '@': './app',
             '@components': './components',
             '@constants': './constants',
+            '@shared': './shared',
           },
         },
       ],

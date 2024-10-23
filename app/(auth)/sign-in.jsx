@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Image, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
 import { useRouter } from 'expo-router';
 import { images, icons } from '@constants';
+import { FontAwesome } from '@expo/vector-icons';
 
 export default function SignIn() {
   const router = useRouter();
@@ -12,12 +13,18 @@ export default function SignIn() {
   return (
     <SafeAreaView className="flex-1 bg-background">
       <View className="flex-1 p-8 pt-12">
-        <View className="items-center mb-12">
+        <View className="items-center mb-2">
           <Image 
             source={images.p2}
             className="w-48 h-48"
             resizeMode="contain"
           />
+        </View>
+
+        <View className="flex-row pt-1 items-center mb-8">
+          <View className="flex-1 h-px bg-gray-300" />
+            <FontAwesome name="star" size={24} color="#6b7280" style={{ marginHorizontal: 16 }} />
+          <View className="flex-1 h-px bg-gray-300" />
         </View>
 
         <Text className="text-2xl font-pbold text-primary text-center mb-8">
