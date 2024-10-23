@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 const Header = ({ title, onMenuPress, onSearchPress }) => {
     return (
-        <View className="flex-row items-center justify-between px-4 py-4 bg-background">
+        <View className="flex-row items-center mt-10 justify-between px-4 py-4 bg-background">
 
             <TouchableOpacity onPress={onMenuPress}>
                 <Ionicons name="menu" size={24} color="#000" />

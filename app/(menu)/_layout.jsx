@@ -2,6 +2,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler"
 import { Drawer } from 'expo-router/drawer';
 import { Image } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
+import Header from '../../components/Header';
 
 
 const MenuLayout = () => {
@@ -16,6 +17,13 @@ const MenuLayout = () => {
                         drawerIcon: ()=> (
                             <FontAwesome name="tasks" size={24} color="#000" />
                         ),
+                        header: ({ navigation }) => (
+                            <Header
+                              title="Опросы"
+                              onMenuPress={() => navigation.toggleDrawer()}
+                              onSearchPress={() => console.log("Поиск")}
+                            />
+                          )
                     }}
                 />
 
