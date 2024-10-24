@@ -79,9 +79,25 @@ export const updateUser = async (userProfile: {
 // Получение списка пользователей
 export const getUsers = async () => {
     try {
-        
+        const response = await axiosClient.get('/users');
+        console.log('Users list successful:', response.data);
+        return response.data;
     } catch (error: AxiosError | any) {
         console.error('Failed to get users:', error.response?.data || error.message);
         throw error;
+    }
+}
+
+
+// Удаление пользователя по 
+export const deleteUser = async (userId: number) => {
+    try {
+        const response = await axiosClient.delete(`/users/${userId}`);
+        console.log('User deleted successfully:', response.data);
+        return response.data;
+    } catch (error: AxiosError | any) {
+        console.error('Failed to delete user:', error.response?.data || error.message);
+        throw error;
+        
     }
 }
