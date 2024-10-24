@@ -74,3 +74,14 @@ export const updateUser = async (userProfile: {
         throw error;
     }
 }
+
+
+// Получение списка пользователей
+export const getUsers = async () => {
+    try {
+        
+    } catch (error: AxiosError | any) {
+        console.error('Failed to get users:', error.response?.data || error.message);
+        throw error;
+    }
+}

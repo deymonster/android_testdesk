@@ -1,53 +1,81 @@
-import { GestureHandlerRootView } from "react-native-gesture-handler"
+import "react-native-gesture-handler";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Drawer } from 'expo-router/drawer';
-import { Image } from "react-native";
-import { FontAwesome } from '@expo/vector-icons';
-import Header from '../../components/Header';
+import { TouchableOpacity } from "react-native";
+import { FontAwesome, Ionicons, MaterialIcons, Feather } from '@expo/vector-icons';
+import CustomDrawerContent from "../../components/drawer/CustomDrawerContent";
+
 
 
 const MenuLayout = () => {
     return (
-        <GestureHandlerRootView style={{ flex: 1}}>
-
-            <Drawer>
-                <Drawer.Screen
-                    name="polls"
-                    options={{
+       
+       <GestureHandlerRootView style={{ flex: 1}}>
+            <Drawer drawerContent={CustomDrawerContent} screenOptions={{
+                drawerHideStatusBarOnOpen: false,
+                drawerActiveBackgroundColor: "#5363DF",
+                drawerActiveTintColor: "#fff",
+                drawerLabelStyle: { marginLeft: -20 },
+            }}>
+                <Drawer.Screen name="polls" options={
+                    {
                         drawerLabel: "Опросы",
-                        drawerIcon: ()=> (
-                            <FontAwesome name="tasks" size={24} color="#000" />
+                        headerTitle: "Мои опросы",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="help-circle-outline" size={size} color={color} />
                         ),
-                        header: ({ navigation }) => (
-                            <Header
-                              title="Опросы"
-                              onMenuPress={() => navigation.toggleDrawer()}
-                              onSearchPress={() => console.log("Поиск")}
-                            />
-                          )
-                    }}
-                />
-
-                <Drawer.Screen
-                    name="users"
-                    options={{
-                        drawerLabel: "Пользователи",
-                        drawerIcon: ()=> (
-                            <FontAwesome name="users" size={24} color="#000" />
+                        headerRight: () => (
+                            <TouchableOpacity
+                            style={{ marginRight: 15 }}
+                            onPress={() => console.log("Поиск нажато")}
+                            >
+                                 <Ionicons name="search-outline" size={24} color="#000" />
+                            </TouchableOpacity>
                         ),
-                    }}
-                />
+                    
+                    }
+                }/>
 
-                <Drawer.Screen
-                    name="results"
-                    options={{
+                <Drawer.Screen name="results" options={
+                    {
                         drawerLabel: "Результаты",
-                        drawerIcon: ()=> (
-                            <FontAwesome name="rocket" size={24} color="#000" />
+                        headerTitle: "Результаты",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="stats-chart-outline" size={size} color={color} />
                         ),
-                    }}
-                />
-            </Drawer>
+                        headerRight: () => (
+                            <TouchableOpacity
+                            style={{ marginRight: 15 }}
+                            onPress={() => console.log("Поиск нажато")}
+                            >
+                                 <Ionicons name="search-outline" size={24} color="#000" />
+                            </TouchableOpacity>
+                        ),
+                    
+                    }
+                }/>
 
+                <Drawer.Screen name="users" options={
+                    {
+                        drawerLabel: "Пользователи",
+                        headerTitle: "Пользователи",
+                        drawerIcon: ({ size, color }) => (
+                            <Ionicons name="person-circle-outline" size={size} color={color} />
+                        ),
+                        headerRight: () => (
+                            <TouchableOpacity
+                            style={{ marginRight: 15 }}
+                            onPress={() => console.log("Поиск нажато")}
+                            >
+                                 <Ionicons name="search-outline" size={24} color="#000" />
+                            </TouchableOpacity>
+                        ),
+                    
+                    }
+                }/>
+
+               
+            </Drawer>
         </GestureHandlerRootView>
     )
 
